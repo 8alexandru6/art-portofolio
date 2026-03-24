@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ales496 | Портфолио</title>
+    <style>
+        :root { --bg: #0f0f0f; --text: #f0f0f0; --accent: #7b2ff7; --card: #1a1a1a; --secondary: #a0a0a0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        header { padding: 4rem 2rem; text-align: center; background: radial-gradient(circle at center, #251045 0%, var(--bg) 80%); }
+        .container { max-width: 1200px; margin: auto; padding: 2rem; }
+        section { margin-bottom: 4rem; }
+        .section-title { font-size: 1.6rem; border-left: 4px solid var(--accent); padding-left: 1rem; margin-bottom: 1.5rem; }
+        
+        /* Сетка галереи */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        .card { background: var(--card); border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.3s; position: relative; }
+        .card:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--accent); }
+        .card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .pixel-art { image-rendering: pixelated; }
+        .card-label { padding: 0.5rem; font-size: 0.8rem; text-align: center; color: var(--secondary); }
+
+        /* Полноэкранный просмотр (Modal) */
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: zoom-out; }
+        #modal img { max-width: 90% !important; max-height: 90% !important; border: 2px solid #333; image-rendering: auto; }
+        #modal img.is-pixel { image-rendering: pixelated; transform: scale(1.5); } /* Увеличиваем пиксель-арт в модальном окне */
+
+        /* Кнопки */
+        .btn { display: inline-block; padding: 0.8rem 1.5rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Олейник Александр</h1>
+    <p>Technical 2D Artist | Программист | Выпускник лиц. им. Игоря Виеру</p>
+    <a href="https://ales496.itch.io" class="btn">Itch.io Игры</a>
+</header>
+
+<div class="container">
+
+    <!-- PIXEL ART SPRITESHEETS (10 штук) -->
+    <section>
+        <h2 class="section-title">Спрайт-шиты и Анимация</h2>
+        <div class="gallery">
+            <!-- Повтори этот блок 10 раз, меняя src -->
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet1.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet2.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet3.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet4.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet5.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet6.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet7.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet8.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet9.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/sheet10.png" class="pixel-art" alt="Спрайт-шит 1">
+                <div class="card-label">Sheet 1</div>
+            </div>
+            <!-- ... добавь остальные 9 карточек здесь ... -->
+        </div>
+    </section>
+
+    <!-- PIXEL ART PROPS (10 штук) -->
+    <section>
+        <h2 class="section-title">Игровые предметы и Пропсы</h2>
+        <div class="gallery">
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop1.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop2.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop3.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop4.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop5.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop6.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop7.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop8.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop9.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <div class="card" onclick="openModal(this)">
+                <img src="images/pixel/prop10.png" class="pixel-art" alt="Пропс 1">
+                <div class="card-label">Prop 1</div>
+            </div>
+            <!-- ... добавь остальные 9 карточек здесь ... -->
+        </div>
+    </section>
+
+    
+
+    <!-- PENCIL PORTRAIT (3 штуки) -->
+    <section>
+        <h2 class="section-title">Портрет (Карандаш)</h2>
+        <div class="gallery">
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/pencil1.jpg" alt="Портрет 1"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/pencil2.jpg" alt="Портрет 2"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/pencil3.jpg" alt="Портрет 3"></div>
+        </div>
+    </section>
+
+    <!-- WATERCOLOR PORTRAIT (3 штуки) -->
+    <section>
+        <h2 class="section-title">Портрет (Акварель)</h2>
+        <div class="gallery">
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/water1.jpg" alt="Акварель 1"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/water2.jpg" alt="Акварель 2"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/water3.jpg" alt="Акварель 3"></div>
+        </div>
+    </section>
+    <!-- SKULL ANATOMY (3 штуки) -->
+    <section>
+        <h2 class="section-title">Анатомия: Череп</h2>
+        <div class="gallery">
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/skull1.jpg" alt="Череп 1"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/skull2.jpg" alt="Череп 2"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/skull3.jpg" alt="Череп 3"></div>
+        </div>
+    </section>
+
+    <!-- OIL NATURE MORT (2 штуки) -->
+    <section>
+        <h2 class="section-title">Натюрморт (Масло)</h2>
+        <div class="gallery">
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/oil1.jpg" alt="Масло 1"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/oil2.jpg" alt="Масло 2"></div>
+        </div>
+    </section>
+
+    <!-- SKETCHES (5 штук) -->
+    <section>
+        <h2 class="section-title">Наброски и Концепт-арт</h2>
+        <div class="gallery">
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch1.jpg" alt="Скетч 1"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch2.jpg" alt="Скетч 2"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch3.jpg" alt="Скетч 3"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch4.jpg" alt="Скетч 4"></div>
+            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch5.jpg" alt="Скетч 5"></div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Modal for full view -->
+<div id="modal" onclick="this.style.display='none'">
+    <img id="modal-img" src="" alt="Full View">
+</div>
+
+<script>
+    function openModal(card) {
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const clickedImg = card.querySelector('img');
+        
+        modalImg.src = clickedImg.src;
+        // Если это пиксель-арт, добавляем класс для четкости и масштаба
+        if (clickedImg.classList.contains('pixel-art')) {
+            modalImg.classList.add('is-pixel');
+        } else {
+            modalImg.classList.remove('is-pixel');
+        }
+        
+        modal.style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>

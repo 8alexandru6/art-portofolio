@@ -14,6 +14,12 @@
         
         /* Сетка галереи */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        /* Одна горизонтальная линия для процесса (шаги слева направо) */
+        .process-block { margin-bottom: 2rem; }
+        .process-label { font-size: 1rem; color: var(--secondary); margin: 0 0 0.6rem 0.25rem; font-weight: 600; letter-spacing: 0.02em; }
+        .process-row { display: flex; flex-direction: row; flex-wrap: nowrap; gap: 0.75rem; overflow-x: auto; padding-bottom: 0.35rem; -webkit-overflow-scrolling: touch; }
+        .process-row .card { flex: 0 0 auto; width: min(200px, 42vw); }
+        .process-row .card img { width: 100%; height: 200px; object-fit: contain; background: #111; }
         .card { background: var(--card); border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.3s; position: relative; }
         .card:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--accent); }
         .card img { width: 100%; height: 200px; object-fit: cover; display: block; }
@@ -38,6 +44,55 @@
 </header>
 
 <div class="container">
+
+    <!-- Цифровое: процессы в одну линию по темам -->
+    <section>
+        <h2 class="section-title">Цифровое искусство (процесс)</h2>
+
+        <div class="process-block">
+            <p class="process-label">Miyabi — sketch → paint</p>
+            <div class="process-row">
+                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketch.PNG" alt="Miyabi — эскиз"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint.PNG" alt="Miyabi — покрас 1"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint2.PNG" alt="Miyabi — покрас 2"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint3.PNG" alt="Miyabi — покрас 3"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint4.PNG" alt="Miyabi — покрас 4"></div>
+            </div>
+        </div>
+
+        <div class="process-block">
+            <p class="process-label">BG</p>
+            <div class="process-row">
+                <div class="card" onclick="openModal(this)"><img src="images/digital/bg1.png" alt="Фон 1"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/bg2.png" alt="Фон 2"></div>
+            </div>
+        </div>
+
+        <div class="process-block">
+            <p class="process-label">Nature mort</p>
+            <div class="process-row">
+                <div class="card" onclick="openModal(this)"><img src="images/digital/naturemort1.png" alt="Nature mort — шаг 1"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/naturemort2.png" alt="Nature mort — шаг 2"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/naturemort3.png" alt="Nature mort — шаг 3"></div>
+            </div>
+        </div>
+
+        <div class="process-block">
+            <p class="process-label">Skull</p>
+            <div class="process-row">
+                <div class="card" onclick="openModal(this)"><img src="images/digital/skull1.png" alt="Skull — шаг 1"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/skull2.png" alt="Skull — шаг 2"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/skull3.png" alt="Skull — шаг 3"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/skull4.png" alt="Skull — шаг 4"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/skull5.png" alt="Skull — шаг 5"></div>
+                <div class="card" onclick="openModal(this)"><img src="images/digital/skull6.png" alt="Skull — шаг 6"></div>
+            </div>
+        </div>
+
+        
+
+        
+    </section>
 
     <!-- PIXEL ART SPRITESHEETS (10 штук) -->
     <section>

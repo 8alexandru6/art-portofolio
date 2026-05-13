@@ -11,25 +11,19 @@
         .container { max-width: 1200px; margin: auto; padding: 2rem; }
         section { margin-bottom: 4rem; }
         .section-title { font-size: 1.6rem; border-left: 4px solid var(--accent); padding-left: 1rem; margin-bottom: 1.5rem; }
+        .section-hint { color: var(--secondary); margin: -0.75rem 0 1.5rem 1.25rem; max-width: 42rem; line-height: 1.5; }
         
-        /* Сетка галереи */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-        /* Одна горизонтальная линия для процесса (шаги слева направо) */
-        .process-block { margin-bottom: 2rem; }
-        .process-label { font-size: 1rem; color: var(--secondary); margin: 0 0 0.6rem 0.25rem; font-weight: 600; letter-spacing: 0.02em; }
-        .process-row { display: flex; flex-direction: row; flex-wrap: nowrap; gap: 0.75rem; overflow-x: auto; padding-bottom: 0.35rem; -webkit-overflow-scrolling: touch; }
-        .process-row .card { flex: 0 0 auto; width: min(200px, 42vw); }
-        .process-row .card img { width: 100%; height: 200px; object-fit: contain; background: #111; }
-        .card { background: var(--card); border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.3s; position: relative; }
-        .card:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--accent); }
-        .card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1.25rem; align-items: stretch; }
+        .card { background: var(--card); border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; position: relative; border: 1px solid rgba(123, 47, 247, 0.12); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(123, 47, 247, 0.25); }
+        .card .thumb { flex: 1; min-height: 220px; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse 80% 70% at 50% 40%, #2a2040 0%, #0d0d0d 65%); padding: 0.75rem; }
+        .card img { width: 100%; height: auto; max-height: min(52vh, 480px); object-fit: contain; object-position: center; display: block; }
         .pixel-art { image-rendering: pixelated; }
-        .card-label { padding: 0.5rem; font-size: 0.8rem; text-align: center; color: var(--secondary); }
+        .card-label { padding: 0.65rem 0.75rem; font-size: 0.82rem; text-align: center; color: var(--secondary); border-top: 1px solid rgba(255,255,255,0.06); }
 
-        /* Полноэкранный просмотр (Modal) */
-        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: zoom-out; }
-        #modal img { max-width: 90% !important; max-height: 90% !important; border: 2px solid #333; image-rendering: auto; }
-        #modal img.is-pixel { image-rendering: pixelated; transform: scale(1.5); } /* Увеличиваем пиксель-арт в модальном окне */
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); justify-content: center; align-items: center; cursor: zoom-out; padding: 1rem; box-sizing: border-box; }
+        #modal img { max-width: min(96vw, 1600px) !important; max-height: 92vh !important; width: auto; height: auto; object-fit: contain; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; image-rendering: auto; }
+        #modal img.is-pixel { image-rendering: pixelated; transform: scale(1.5); }
 
         /* Кнопки */
         .btn { display: inline-block; padding: 0.8rem 1.5rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 20px; margin: 5px; }
@@ -45,201 +39,38 @@
 
 <div class="container">
 
-    <!-- Цифровое: процессы в одну линию по темам -->
     <section>
-        <h2 class="section-title">Цифровое искусство (процесс)</h2>
-
-        <div class="process-block">
-            <p class="process-label">Miyabi — sketch → paint</p>
-            <div class="process-row">
-                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketch.PNG" alt="Miyabi — эскиз"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint.PNG" alt="Miyabi — покрас 1"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint2.PNG" alt="Miyabi — покрас 2"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint3.PNG" alt="Miyabi — покрас 3"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/MiyabiSketchPaint4.PNG" alt="Miyabi — покрас 4"></div>
-            </div>
-        </div>
-
-        <div class="process-block">
-            <p class="process-label">BG</p>
-            <div class="process-row">
-                <div class="card" onclick="openModal(this)"><img src="images/digital/bg1.png" alt="Фон 1"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/bg2.png" alt="Фон 2"></div>
-            </div>
-        </div>
-
-        <div class="process-block">
-            <p class="process-label">Nature mort</p>
-            <div class="process-row">
-                <div class="card" onclick="openModal(this)"><img src="images/digital/naturemort1.png" alt="Nature mort — шаг 1"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/naturemort2.png" alt="Nature mort — шаг 2"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/naturemort3.png" alt="Nature mort — шаг 3"></div>
-            </div>
-        </div>
-
-        <div class="process-block">
-            <p class="process-label">Skull</p>
-            <div class="process-row">
-                <div class="card" onclick="openModal(this)"><img src="images/digital/skull1.png" alt="Skull — шаг 1"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/skull2.png" alt="Skull — шаг 2"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/skull3.png" alt="Skull — шаг 3"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/skull4.png" alt="Skull — шаг 4"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/skull5.png" alt="Skull — шаг 5"></div>
-                <div class="card" onclick="openModal(this)"><img src="images/digital/skull6.png" alt="Skull — шаг 6"></div>
-            </div>
-        </div>
-
-        
-
-        
-    </section>
-
-    <!-- PIXEL ART SPRITESHEETS (10 штук) -->
-    <section>
-        <h2 class="section-title">Спрайт-шиты и Анимация</h2>
-        <div class="gallery">
-            <!-- Повтори этот блок 10 раз, меняя src -->
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet1.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet2.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet3.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet4.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet5.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet6.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet7.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet8.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet9.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/sheet10.png" class="pixel-art" alt="Спрайт-шит 1">
-                <div class="card-label">Sheet 1</div>
-            </div>
-            <!-- ... добавь остальные 9 карточек здесь ... -->
-        </div>
-    </section>
-
-    <!-- PIXEL ART PROPS (10 штук) -->
-    <section>
-        <h2 class="section-title">Игровые предметы и Пропсы</h2>
+        <h2 class="section-title">Работы</h2>
+        <p class="section-hint">Нажмите на изображение, чтобы открыть крупный просмотр.</p>
         <div class="gallery">
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop1.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/AethrisTg.png" alt="Aethris" loading="lazy" decoding="async"></div>
+                <div class="card-label">Aethris</div>
             </div>
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop2.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/Aris.png" alt="Aris" loading="lazy" decoding="async"></div>
+                <div class="card-label">Aris</div>
             </div>
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop3.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/Demian.png" alt="Demian" loading="lazy" decoding="async"></div>
+                <div class="card-label">Demian</div>
             </div>
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop4.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/Eris.png" alt="Eris" loading="lazy" decoding="async"></div>
+                <div class="card-label">Eris</div>
             </div>
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop5.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/final.png" alt="Final" loading="lazy" decoding="async"></div>
+                <div class="card-label">Final</div>
             </div>
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop6.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/Mu Lan.png" alt="Mu Lan" loading="lazy" decoding="async"></div>
+                <div class="card-label">Mu Lan</div>
             </div>
             <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop7.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
+                <div class="thumb"><img src="images/queenbee2.png" alt="Queen Bee" loading="lazy" decoding="async"></div>
+                <div class="card-label">Queen Bee</div>
             </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop8.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop9.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
-            </div>
-            <div class="card" onclick="openModal(this)">
-                <img src="images/pixel/prop10.png" class="pixel-art" alt="Пропс 1">
-                <div class="card-label">Prop 1</div>
-            </div>
-            <!-- ... добавь остальные 9 карточек здесь ... -->
-        </div>
-    </section>
-
-    
-
-    <!-- PENCIL PORTRAIT (3 штуки) -->
-    <section>
-        <h2 class="section-title">Портрет (Карандаш)</h2>
-        <div class="gallery">
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/pencil1.jpg" alt="Портрет 1"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/pencil2.jpg" alt="Портрет 2"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/pencil3.jpg" alt="Портрет 3"></div>
-        </div>
-    </section>
-
-    <!-- WATERCOLOR PORTRAIT (3 штуки) -->
-    <section>
-        <h2 class="section-title">Портрет (Акварель)</h2>
-        <div class="gallery">
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/water1.jpg" alt="Акварель 1"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/water2.jpg" alt="Акварель 2"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/water3.jpg" alt="Акварель 3"></div>
-        </div>
-    </section>
-    <!-- SKULL ANATOMY (3 штуки) -->
-    <section>
-        <h2 class="section-title">Анатомия: Череп</h2>
-        <div class="gallery">
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/skull1.jpg" alt="Череп 1"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/skull2.jpg" alt="Череп 2"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/skull3.jpg" alt="Череп 3"></div>
-        </div>
-    </section>
-
-    <!-- OIL NATURE MORT (2 штуки) -->
-    <section>
-        <h2 class="section-title">Натюрморт (Масло)</h2>
-        <div class="gallery">
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/oil1.jpg" alt="Масло 1"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/oil2.jpg" alt="Масло 2"></div>
-        </div>
-    </section>
-
-    <!-- SKETCHES (5 штук) -->
-    <section>
-        <h2 class="section-title">Наброски и Концепт-арт</h2>
-        <div class="gallery">
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch1.jpg" alt="Скетч 1"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch2.jpg" alt="Скетч 2"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch3.jpg" alt="Скетч 3"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch4.jpg" alt="Скетч 4"></div>
-            <div class="card" onclick="openModal(this)"><img src="images/traditional/sketch5.jpg" alt="Скетч 5"></div>
         </div>
     </section>
 
